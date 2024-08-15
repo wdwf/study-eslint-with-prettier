@@ -1,34 +1,24 @@
-import globals from 'globals'
-import pluginJs from '@eslint/js'
-
+import globals from 'globals';
+import pluginJs from '@eslint/js';
+import eslintConfigPrettier from 'eslint-config-prettier';
 
 export default [
-	{
-		rules: {
-			'no-unused-vars': 'error',
-			'no-undef': 'error',
-			'indent': [
-				'error',
-				'tab'
-			],
-			'quotes': [
-				'error',
-				'single'
-			],
-			'semi': [
-				'error',
-				'never'
-			],
-			'linebreak-style': [
-				'error',
-				'unix'
-			]
-		}, 
-	},
-	{files: ['**/*.js'], languageOptions: {sourceType: 'commonjs'}},
-	{languageOptions: { globals: globals.node }},
-	pluginJs.configs.recommended,
-]
+  pluginJs.configs.recommended,
+  {
+    rules: {
+      quotes: ['error', 'single'],
+      'no-unused-vars': 'error',
+      'no-undef': 'error',
+      indent: ['error', 'tab'],
+      semi: ['error', 'never'],
+      'linebreak-style': ['error', 'unix'],
+      'plugin:react/jsx-runtime': 'off',
+    },
+  },
+  { files: ['**/*.js'], languageOptions: { sourceType: 'commonjs' } },
+  { languageOptions: { globals: globals.node } },
+  eslintConfigPrettier,
+];
 
 /*
   nível de regra
